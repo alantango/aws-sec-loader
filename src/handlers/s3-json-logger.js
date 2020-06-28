@@ -9,6 +9,9 @@ const s3 = new AWS.S3();
   * A Lambda function that logs the payload received from S3.
   */
 exports.s3JsonLoggerHandler = async (event, context) => {
+
+    console.log("__EVENT_v1:: " + JSON.stringify(event));
+
     const getObjectRequests = event.Records.map(async (record) => {
         const params = {
             Bucket: record.s3.bucket.name,
